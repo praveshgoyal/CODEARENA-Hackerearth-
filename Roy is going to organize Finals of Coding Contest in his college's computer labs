@@ -1,0 +1,86 @@
+
+/*
+Roy is going to organize Finals of Coding Contest in his college's computer labs. According to the rules of contest, problem statements will be available on each computer as pdf file.
+
+Now there are N number of computers and only one of them has the pdf file. Roy has collected M number of pendrives from his friends. Copying pdf from computer to pendrive or from pendrive to computer takes exactly 1 minute. Roy has to copy pdf to all N computers in minimum (optimal) time possible. You are to find this minimum time. Please see Sample Test Explanation for clarity.
+
+Input:
+
+First line will contain integer T - number of test cases.
+
+Next T lines each will contain two space separated integers, N - number of computers, M - number of pendrives.
+
+Output:
+
+Print the minimum time (in minutes) for each test case in a new line.
+
+Constraints:
+
+
+
+SAMPLE INPUT 
+1
+10 3
+
+SAMPLE OUTPUT 
+5
+
+Explanation
+Just for the sake of understanding, let us number computers from 1 to and pendrives from 1 to 3. Initially only  computer has the pdf.
+
+ minute: Roy copies the pdf from  computer to 1st pendrive, so 1 computer and 1 pendrive has the pdf 2nd minute: He copies the pdf from  pendrive to  computer and alongside he copies pdf from computer to  pendrive.  minute: Now he has two pendrives with pdf, so he copies the pdf to  and  computer using  and pendrive. Alongside he already copied pdf to  and  computer and has one pendrive blank. So he copies pdf into 3rd pendrive using any of the  or  computer.  minute: Now first 4 computers are done and we have pdf in all 3 pendrives. So he simply copies pdf into , and  computer using three pendrive respectively.  minute: He copies the pdf into ,  and  computers using three pendrives respectively.
+ 
+ 
+ 
+ 
+ 
+ java code
+ 
+ */
+ 
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+//import for Scanner and other utility classes
+import java.util.*;
+
+
+
+
+class TestClass {
+     
+ 
+    
+    
+    
+    
+    public static void main(String args[] ) throws Exception {
+        
+        
+        
+         Scanner sc=new Scanner(System.in);
+        
+        int N=sc.nextInt();
+        for(int i=0;i<N;i++)
+        {
+        int m=sc.nextInt();
+        int x=sc.nextInt();
+        int t=1;
+        int p=1;
+        int count=1;
+        
+        while(t<m)
+        {
+            t=t+p;
+            count++;
+            if(t<=x)
+            p=t;
+            else
+            p=x;
+        }
+        System.out.println(count);
+        }
+       
+    }
+}
