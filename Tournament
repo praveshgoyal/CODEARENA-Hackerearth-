@@ -1,0 +1,107 @@
+Lord Paul of the Seven Kingdoms has organized a fighting tournament between all the warriors of the kingdom. He finally gets the match summary of the entire tournament, which states which warrior fought with which warrior. Lord Paul wants you to find out the number of warriors who participated in maximum number of matches. (Which means they survived these many matches!) If there are warriors with equal number of matches, print all of them in lexicographical order (sorted order).
+
+Input:
+
+First line of input contains number of matches N.
+Next N lines contains two names of worriers who fought with each other.
+
+Output:
+
+Print number of worriers who participated in maximum numbers of matches. If there are warriors with equal number of matches, print all of them in lexicographical order (sorted order).
+
+Constraints:
+
+1 ≤ N ≤ 105 
+1 ≤ |length of team name| ≤ 20
+
+Note:
+
+All team names will be in Uppercase only.
+
+SAMPLE INPUT 
+5
+GER JAP
+IND JAP
+GER JAP
+IND BRZ
+IND POL
+
+SAMPLE OUTPUT 
+2
+IND
+JAP
+
+
+Java
+
+
+
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+//import for Scanner and other utility classes
+import java.util.*;
+
+
+
+
+class TestClass {
+   
+    
+    
+    public static void main(String args[] ) throws Exception {
+        
+        
+        
+         Scanner sc=new Scanner(System.in);
+        
+        int N=sc.nextInt();
+        String g=sc.nextLine();
+        TreeMap<String,Integer> h=new TreeMap<>();
+        for(int k=0;k<N;k++)
+        {
+            
+          String f=sc.nextLine();
+          String[] w=f.split("\\s");
+          
+          for(int i=0;i<2;i++)
+          {
+              if(!h.containsKey(w[i]))
+              h.put(w[i],1);
+              else
+              {
+                int t=h.get(w[i]);
+                h.remove(w[i]);
+                h.put(w[i],1+t);
+              }
+              
+          }
+          
+           
+        }
+        int max=0;
+        int count=0;
+            Set<String> keys = h.keySet();
+            for(String key: keys){
+            if(max<h.get(key))
+            {
+            max=h.get(key);
+            count=0;
+            }
+            if(max==h.get(key))
+            count++;
+            }
+            
+            System.out.println(count);
+            
+            Set<String> kes= h.keySet();
+            for(String ke: kes)
+            if(max==h.get(ke))
+            System.out.println(ke);
+        
+      
+      
+    }
+}
+
